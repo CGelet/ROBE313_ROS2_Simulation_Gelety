@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<robot name="simple_bot">
+
+  <!-- Base link at odom origin (from your tf) -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.4 0.3 0.1"/>
+      </geometry>
+      <origin xyz="0 0 0.05" rpy="0 0 0"/>
+      <material name="gray">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Camera mounted above base_link -->
+  <link name="camera_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.05" radius="0.02"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+      <material name="blue">
+        <color rgba="0.1 0.1 1.0 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Static transform base_link -> camera_link -->
+  <joint name="base_to_camera" type="fixed">
+    <parent link="base_link"/>
+    <child link="camera_link"/>
+    <origin xyz="0.0 0.0 0.25" rpy="0 0 0"/>
+  </joint>
+
+</robot>
